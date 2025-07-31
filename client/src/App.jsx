@@ -12,7 +12,7 @@ export default function App() {
       future={{
         v7_startTransition: true,
       }}
-      className=" "
+      className=""
     >
       <Header />
       <Routes>
