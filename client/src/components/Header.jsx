@@ -74,7 +74,7 @@ const Header = () => {
             </div>
             <hr className=" text-gray-400 mx-4 " />
             <div className=" hover:bg-gray-100 my-2 cursor-pointer px-3">
-              <Link to={"/sign-in"}>
+              <Link to={"/sign-in"} onClick={() => setShow(false)}>
                 <p className="flex items-center gap-1">
                   <IoMdLogIn className=" hidden sm:flex size-5" />
                   Sign in
