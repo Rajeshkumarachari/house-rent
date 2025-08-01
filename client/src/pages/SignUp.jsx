@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { signInFailure, signInStart, signInSuccess } from "../redux/userSlice";
+import OAuth from "../components/OAuth";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading, error } = useSelector((store) => store.user || {});
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -69,6 +70,7 @@ const SignUp = () => {
         >
           {loading ? "Loading..." : " Sign up"}
         </button>
+        <OAuth />
       </form>
       <div className=" flex gap-2 mt-3 mx-3  ">
         <p> have an account ?</p>
