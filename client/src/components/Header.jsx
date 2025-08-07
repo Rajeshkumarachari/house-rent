@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
-import { MdOutlineInfo } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoReorderThree } from "react-icons/io5";
-import { BsQuestionCircle } from "react-icons/bs";
-import house from "../assets/house.png";
+
+import { useSelector } from "react-redux";
+import Model from "./Model";
 const Header = () => {
   const [show, setShow] = useState(false);
+  const { currentUser } = useSelector((store) => store.user || {});
+  console.log("currentUser", currentUser?.data);
   return (
     <header className=" bg-slate-50 shadow-md">
       <div className=" flex justify-between items-center max-w-6xl mx-auto p-2 ">
@@ -34,11 +36,19 @@ const Header = () => {
               <AiOutlineHome className=" size-5" /> Home
             </li>
           </Link>
+
           <Link to={"/about"}>
-            <li className=" hidden sm:flex  items-center hover:bg-slate-300 cursor-pointer px-2 py-1 rounded-2xl text-slate-900 font-semibold gap-1 hover:border  hover:border-slate-400">
-              <MdOutlineInfo className=" size-5" /> About
-            </li>
+            {currentUser?.data && (
+              <div className="">
+                <img
+                  src={currentUser?.data?.avatar}
+                  alt="photo"
+                  className=" size-10 rounded-full cursor-pointer "
+                />
+              </div>
+            )}
           </Link>
+
           <Link to={"/sign-in"}>
             <li className=" sm:hidden flex items-center hover:bg-slate-200 cursor-pointer px-2 py-1 rounded-2xl text-slate-900 font-semibold gap-1 hover:border  hover:border-slate-300">
               <IoMdLogIn className=" hidden sm:flex size-5" /> Sign in
@@ -51,38 +61,7 @@ const Header = () => {
             <IoReorderThree className=" size-6" />
           </li>
         </ul>
-        {show && (
-          <div className=" absolute w-xs right-28 bg-white top-[63px] shadow-md rounded-md">
-            <div className=" cursor-pointer hover:bg-gray-100 my-3 px-3">
-              <p className=" flex gap-2 p-1 items-center  ">
-                <BsQuestionCircle /> Help Center
-              </p>
-            </div>
-            <hr className=" text-gray-400 mx-4 " />
-            <div className="flex hover:bg-gray-100 my-2 cursor-pointer">
-              <div className=" px-3">
-                <h1 className=" font-semibold">Become a host</h1>
-                <p className=" text-xs  text-gray-500 w-3/4">
-                  Its easy to start hosting and earn extra income.
-                </p>
-              </div>
-              <img src={house} alt="house" className=" size-12 mx-2" />
-            </div>
-            <hr className=" text-gray-400 mx-4 " />
-            <div className="px-3 hover:bg-gray-100 my-2 cursor-pointer">
-              <p>Find a co-host </p>
-            </div>
-            <hr className=" text-gray-400 mx-4 " />
-            <div className=" hover:bg-gray-100 my-2 cursor-pointer px-3">
-              <Link to={"/sign-in"} onClick={() => setShow(false)}>
-                <p className="flex items-center gap-1">
-                  <IoMdLogIn className=" hidden sm:flex size-5" />
-                  Sign in
-                </p>
-              </Link>
-            </div>
-          </div>
-        )}
+        {show && <Model show={show} setShow={setShow} />}
       </div>
     </header>
   );

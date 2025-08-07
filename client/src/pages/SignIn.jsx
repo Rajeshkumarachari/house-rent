@@ -7,9 +7,7 @@ import OAuth from "../components/OAuth";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
-  const { loading, error } = useSelector(
-    (store) => store.persistedReducer.user || {}
-  );
+  const { loading, error } = useSelector((store) => store.user || {});
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
