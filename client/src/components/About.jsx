@@ -9,6 +9,9 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
   updateUserFailure,
   updateUserStart,
   updateUserSuccess,
@@ -91,6 +94,20 @@ const About = () => {
       dispatch(updateUserFailure(error.message));
     }
   };
+  const handleDeleteAccount = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await axios.delete(`/api/user/delete/${currentUser._id}`);
+      if (res.data.success === false) {
+        dispatch(deleteUserFailure(res.data.message));
+        return;
+      }
+      console.log("res", res);
+      dispatch(deleteUserSuccess(res.data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
   return (
     <div className=" w-[75vw] ">
       <h1 className="text-3xl font-medium mt-2  text-center">About me</h1>
@@ -107,7 +124,10 @@ const About = () => {
           <p>{currentUser?.username} </p>
           <p>{currentUser?.email} </p>
           <div className="flex justify-between mx-4">
-            <button className=" cursor-pointer text-red-600  hover:bg-red-50 rounded-lg p-1 font-medium">
+            <button
+              onClick={handleDeleteAccount}
+              className=" cursor-pointer text-red-600  hover:bg-red-50 rounded-lg p-1 font-medium"
+            >
               Delete Account
             </button>
             <button className="cursor-pointer text-red-600  rounded-lg p-1 font-medium">
@@ -159,7 +179,7 @@ const About = () => {
                         max="100"
                       ></progress>
                     )}
-                    {fileUploadError && (
+                    {error && (
                       <p className="text-red-500 text-xs font-medium">
                         Error uploading file...
                       </p>
