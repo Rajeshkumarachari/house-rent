@@ -12,11 +12,14 @@ import {
   deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
+  signOutUserFailure,
+  signOutUserStart,
   updateUserFailure,
   updateUserStart,
   updateUserSuccess,
 } from "../redux/userSlice";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
   const { currentUser, loading, error } = useSelector(
@@ -30,6 +33,7 @@ const About = () => {
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // console.log(formData);
 
   useEffect(() => {
@@ -102,17 +106,31 @@ const About = () => {
         dispatch(deleteUserFailure(res.data.message));
         return;
       }
-      console.log("res", res);
+      // console.log("res", res);
       dispatch(deleteUserSuccess(res.data));
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
+    }
+  };
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const data = await axios.get("/api/auth/signout", {
+        withCredentials: true,
+      });
+      if (data.success === false) {
+        dispatch(signOutUserFailure(data));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+    } catch (error) {
+      dispatch(signOutUserFailure(error.message));
     }
   };
   return (
     <div className=" w-[75vw] ">
       <h1 className="text-3xl font-medium mt-2  text-center">About me</h1>
 
-      {/* {make this below div center in mobile screen only} */}
       <div className="  sm:flex block  items-center text-center">
         <div className="sm:w-[40%] w-full flex flex-col gap-3  shadow-sm m-5 py-5 rounded-2xl ">
           <h1 className=" text-xl">My profile </h1>
@@ -130,7 +148,10 @@ const About = () => {
             >
               Delete Account
             </button>
-            <button className="cursor-pointer text-red-600  rounded-lg p-1 font-medium">
+            <button
+              onClick={handleSignOut}
+              className="cursor-pointer text-red-600  rounded-lg p-1 font-medium"
+            >
               Sign Out
             </button>
           </div>

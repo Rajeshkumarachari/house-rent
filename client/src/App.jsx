@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import PastTrips from "./components/PastTrips";
 import Connections from "./components/Connections";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
           </Route>
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
