@@ -25,7 +25,7 @@ export default function Model({ show, setShow }) {
 
   return (
     <div className=" z-10 absolute w-xs right-28 bg-white top-[63px] shadow-md rounded-md">
-      {currentUser?.data &&
+      {currentUser &&
         sidebarData.map((data) => (
           <Link to={data.link} onClick={() => setShow(false)} key={data.id}>
             <div className=" cursor-pointer hover:bg-gray-100 my-3 px-3">
@@ -56,7 +56,7 @@ export default function Model({ show, setShow }) {
       </div>
       <hr className=" text-gray-400 mx-4 " />
       <div className=" hover:bg-red-50 my-2 cursor-pointer px-3">
-        {currentUser?.data ? (
+        {currentUser ? (
           <Link to={"/sign-in"} onClick={() => setShow(false)}>
             <p className="flex items-center gap-1 text-red-500">
               <IoMdLogIn className=" hidden text-red-400 sm:flex size-5" />

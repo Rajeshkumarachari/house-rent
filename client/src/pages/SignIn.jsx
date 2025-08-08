@@ -22,12 +22,13 @@ const SignIn = () => {
     try {
       dispatch(signInStart());
       const data = await axios.post("/api/auth/signin", formData);
-      console.log("user", data);
+      // console.log("user", data);
       if (data.success === false) {
-        dispatch(signInFailure(data.message));
+        dispatch(signInFailure(data?.message));
         return;
       }
-      dispatch(signInSuccess(data.data));
+      console.log(data?.data);
+      dispatch(signInSuccess(data?.data));
       navigate("/");
     } catch (error) {
       if (

@@ -10,7 +10,7 @@ import Model from "./Model";
 const Header = () => {
   const [show, setShow] = useState(false);
   const { currentUser } = useSelector((store) => store.user || {});
-  console.log("currentUser", currentUser?.data);
+  // console.log("currentUser", currentUser);
   return (
     <header className=" bg-slate-50 shadow-md">
       <div className=" flex justify-between items-center max-w-6xl mx-auto p-2 ">
@@ -38,10 +38,10 @@ const Header = () => {
           </Link>
 
           <Link to={"/about"}>
-            {currentUser?.data && (
+            {currentUser?.avatar && (
               <div className="">
                 <img
-                  src={currentUser?.data?.avatar}
+                  src={currentUser?.avatar}
                   alt="photo"
                   className=" size-10 rounded-full cursor-pointer "
                 />
