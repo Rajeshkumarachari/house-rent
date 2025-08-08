@@ -42,7 +42,7 @@ const Profile = () => {
                 <img
                   src={link?.logo}
                   alt={link?.name}
-                  className="size-12 rounded-full sm:block hidden "
+                  className="size-10 object-cover   rounded-full sm:block hidden "
                 />
                 <span className=" font-medium"> {link?.name}</span>
               </li>

@@ -43,7 +43,7 @@ const Header = () => {
                 <img
                   src={currentUser?.avatar}
                   alt="photo"
-                  className=" size-10 rounded-full cursor-pointer "
+                  className=" size-10 rounded-full cursor-pointer object-cover "
                 />
               </div>
             )}
