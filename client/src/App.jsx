@@ -10,6 +10,7 @@ import PastTrips from "./components/PastTrips";
 import Connections from "./components/Connections";
 import Footer from "./components/Footer";
 import BecomeAHost from "./pages/BecomeAHost";
+import Listings from "./components/Listings";
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
                 <Route index element={<About />} />
                 <Route path="past-trips" element={<PastTrips />} />
                 <Route path="connections" element={<Connections />} />
+                <Route path="listings" element={<Listings />} />
               </Route>
               <Route path="/become-a-host" element={<BecomeAHost />} />
             </Route>

@@ -15,12 +15,18 @@ const Profile = () => {
     },
     {
       id: 2,
+      name: "Your Listings",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYlSCMRDH-9978Ex7T3X5WIg9FpDAlkpfuMg&s",
+      link: "/profile/listings",
+    },
+    {
+      id: 3,
       name: "Past trips",
       logo: "https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-UserProfile/original/797c1df2-a40c-4d93-9550-ca5b213cd01b.png?im_w=240",
       link: "/profile/past-trips",
     },
     {
-      id: 3,
+      id: 4,
       name: "Connections",
       logo: "https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-UserProfile/original/ed28537a-fc3c-4253-bb89-a6d927df7e50.png?im_w=240",
       link: "/profile/connections",
