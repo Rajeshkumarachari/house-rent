@@ -30,7 +30,7 @@ export default function Model({ show, setShow }) {
     { id: 6, icon: <LuGlobe />, name: "Language & currency", link: "#" },
   ];
   const { currentUser } = useSelector((store) => store.user || {});
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleSignOut = async () => {
     try {
@@ -66,15 +66,17 @@ export default function Model({ show, setShow }) {
         </p>
       </div>
       <hr className=" text-gray-400 mx-4 " />
-      <div className="flex hover:bg-gray-100 my-2 cursor-pointer">
-        <div className=" px-3">
-          <h1 className=" font-semibold">Become a host</h1>
-          <p className=" text-xs  text-gray-500 w-3/4">
-            Its easy to start hosting and earn extra income.
-          </p>
+      <Link to="/become-a-host" onClick={() => setShow(false)}>
+        <div className="flex hover:bg-gray-100 my-2 cursor-pointer">
+          <div className=" px-3">
+            <h1 className=" font-semibold">Become a host</h1>
+            <p className=" text-xs  text-gray-500 w-3/4">
+              Its easy to start hosting and earn extra income.
+            </p>
+          </div>
+          <img src={house} alt="house" className=" size-12 mx-2" />
         </div>
-        <img src={house} alt="house" className=" size-12 mx-2" />
-      </div>
+      </Link>
       <hr className=" text-gray-400 mx-4 " />
       <div className="px-3 hover:bg-gray-100 my-2 cursor-pointer">
         <p>Find a co-host </p>

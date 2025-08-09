@@ -19,22 +19,21 @@ const Footer = () => {
     <BiLogoLinkedin />,
   ];
   return (
-    <div className="absolute bottom-0 w-full  ">
-      <hr className=" text-gray-300" />
+    <div className=" w-full flex flex-col sm:flex-row  justify-between  border-t-1 pt-4    border-gray-200   ">
+      <div className="">
+        <ul className="flex  ">
+          <li>© {new Date().getFullYear()} Rajesh house, Inc.</li>
+          {firstData.map((item, index) => (
+            <li
+              key={index}
+              className="mx-2 flex items-center justify-center text-gray-700 text-sm hover:underline cursor-pointer"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className=" flex justify-between my-4 mx-5 ">
-        <div className="">
-          <ul className="flex  ">
-            <li>© {new Date().getFullYear()} Rajesh house, Inc.</li>
-            {firstData.map((item, index) => (
-              <li
-                key={index}
-                className="mx-2 flex items-center justify-center text-gray-700 text-sm hover:underline cursor-pointer"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
         <div className="flex gap-1">
           {secondData.map((item) => (
             <span

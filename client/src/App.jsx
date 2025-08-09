@@ -9,29 +9,36 @@ import PrivateRoute from "./components/PrivateRoute";
 import PastTrips from "./components/PastTrips";
 import Connections from "./components/Connections";
 import Footer from "./components/Footer";
+import BecomeAHost from "./pages/BecomeAHost";
 
 export default function App() {
   return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-      }}
-    >
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route element={<PrivateRoute />}>
-          {/* <Profile/> */}
-          <Route path="/profile" element={<Profile />}>
-            <Route index element={<About />} />
-            <Route path="past-trips" element={<PastTrips />} />
-            <Route path="connections" element={<Connections />} />
-          </Route>
-        </Route>
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <div className="min-h-screen flex flex-col">
+      <BrowserRouter
+        className=""
+        future={{
+          v7_startTransition: true,
+        }}
+      >
+        <Header />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route element={<PrivateRoute />}>
+              {/* <Profile/> */}
+              <Route path="/profile" element={<Profile />}>
+                <Route index element={<About />} />
+                <Route path="past-trips" element={<PastTrips />} />
+                <Route path="connections" element={<Connections />} />
+              </Route>
+              <Route path="/become-a-host" element={<BecomeAHost />} />
+            </Route>
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 }
