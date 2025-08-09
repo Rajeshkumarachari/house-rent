@@ -18,7 +18,6 @@ const BecomeAHost = () => {
   const [files, setFiles] = useState([]);
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
-
   const [formData, setFormData] = useState({
     imageUrls: [],
     name: "",
@@ -39,7 +38,7 @@ const BecomeAHost = () => {
   const navigate = useNavigate();
   //   console.log(error);
 
-  //   console.log(formData);
+  console.log(formData);
   const handleUploadImage = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 4) {
       setUploading(true);
@@ -147,6 +146,40 @@ const BecomeAHost = () => {
       setLoading(false);
     }
   };
+
+  const decreaseBedroom = () => {
+    if (formData.bedrooms > 1) {
+      setFormData({
+        ...formData,
+        bedrooms: formData.bedrooms - 1,
+      });
+    }
+  };
+  const increaseBedroom = () => {
+    if (formData.bedrooms < 30) {
+      setFormData({
+        ...formData,
+        bedrooms: formData.bedrooms + 1,
+      });
+    }
+  };
+
+  const decreaseBathroom = () => {
+    if (formData.bathrooms > 1) {
+      setFormData({
+        ...formData,
+        bathrooms: formData.bathrooms - 1,
+      });
+    }
+  };
+  const increaseBathroom = () => {
+    if (formData.bathrooms < 30) {
+      setFormData({
+        ...formData,
+        bathrooms: formData.bathrooms + 1,
+      });
+    }
+  };
   return (
     <main className=" p-3 max-w-4xl mx-auto h-full">
       <div className="">
@@ -243,31 +276,45 @@ const BecomeAHost = () => {
             </div>
           </div>
           <div className=" flex gap-3 flex-wrap">
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                id="bedrooms"
-                min={1}
-                max={10}
-                onChange={handleChange}
-                value={formData.bedrooms}
-                required
-                className=" px-2  py-1 bg-white rounded-lg focus:outline-none border border-gray-400"
-              />
-              <p>Beds</p>
+            <div className="flex items-center gap-2 justify-center">
+              <p
+                onClick={decreaseBedroom}
+                className={`rounded-full border flex justify-center items-center cursor-pointer size-7  ${
+                  formData.bedrooms == 1 ? " text-gray-400" : "text-gray-700"
+                }`}
+              >
+                -
+              </p>
+              <span>{formData.bedrooms} </span>
+              <p
+                onClick={increaseBedroom}
+                className={`rounded-full border flex justify-center items-center cursor-pointer size-7  ${
+                  formData.bedrooms < 30 ? " text-gray-700" : "text-gray-400"
+                } `}
+              >
+                +
+              </p>
+              <span>Beds</span>
             </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="number"
-                id="bathrooms"
-                min={1}
-                max={10}
-                onChange={handleChange}
-                value={formData.bathrooms}
-                required
-                className=" px-2 py-1 bg-white rounded-lg focus:outline-none border border-gray-400"
-              />
-              <p>Bathrooms</p>
+            <div className="flex items-center gap-2 justify-center">
+              <p
+                onClick={decreaseBathroom}
+                className={`rounded-full border flex justify-center items-center cursor-pointer size-7  ${
+                  formData.bathrooms == 1 ? " text-gray-400" : "text-gray-700"
+                }`}
+              >
+                -
+              </p>
+              <span>{formData.bathrooms} </span>
+              <p
+                onClick={increaseBathroom}
+                className={`rounded-full border flex justify-center items-center cursor-pointer size-7  ${
+                  formData.bathrooms < 30 ? " text-gray-700" : "text-gray-400"
+                } `}
+              >
+                +
+              </p>
+              <span>Bathroom</span>
             </div>
             <div className="flex items-center gap-2">
               <input
