@@ -11,6 +11,7 @@ import Connections from "./components/Connections";
 import Footer from "./components/Footer";
 import BecomeAHost from "./pages/BecomeAHost";
 import Listings from "./components/Listings";
+import UpdateListing from "./pages/UpdateListing";
 
 export default function App() {
   return (
@@ -36,6 +37,10 @@ export default function App() {
                 <Route path="listings" element={<Listings />} />
               </Route>
               <Route path="/become-a-host" element={<BecomeAHost />} />
+              <Route
+                path="/update-listing/:listingId"
+                element={<UpdateListing />}
+              />
             </Route>
           </Routes>
         </main>

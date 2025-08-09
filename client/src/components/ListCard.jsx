@@ -20,16 +20,12 @@ const ListCard = ({ list }) => {
       console.log(error);
     }
   };
-  const handleEditList = async () => {
-    console.log("rajesh");
-  };
   return (
     <div className="group items-center justify-center w-48 ">
       <div className="flex opacity-0 group-hover:opacity-100  justify-between mx-2">
-        <CiEdit
-          onClick={handleEditList}
-          className=" size-7  hover:bg-blue-600 hover:text-white p-1 rounded-sm"
-        />
+        <Link to={`/update-listing/${list._id}`}>
+          <CiEdit className=" size-7  hover:bg-blue-600 hover:text-white p-1 rounded-sm" />
+        </Link>
         <IoMdClose
           onClick={handleDeleteList}
           className="size-7  hover:bg-red-600 hover:text-white p-1 rounded-sm"
