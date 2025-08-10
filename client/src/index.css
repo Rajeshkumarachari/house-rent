@@ -4,3 +4,11 @@ body {
   background-color: rgb(241, 245, 241);
   /* font-family: Cereal; */
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"] {
+  -moz-appearance: textfield;
+}

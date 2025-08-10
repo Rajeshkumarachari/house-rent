@@ -52,7 +52,6 @@ const listingSchema = new mongoose.Schema(
     userRef: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      //   type: String,
       required: true,
     },
   },

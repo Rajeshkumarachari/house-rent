@@ -49,14 +49,9 @@ const Header = () => {
             )}
           </Link>
 
-          <Link to={"/sign-in"}>
-            <li className=" sm:hidden flex items-center hover:bg-slate-200 cursor-pointer px-2 py-1 rounded-2xl text-slate-900 font-semibold gap-1 hover:border  hover:border-slate-300">
-              <IoMdLogIn className=" hidden sm:flex size-5" /> Sign in
-            </li>
-          </Link>
           <li
             onClick={() => setShow(!show)}
-            className=" hidden sm:block bg-slate-200 rounded-full p-2 cursor-pointer hover:opacity-80"
+            className="  bg-slate-200 rounded-full p-2 cursor-pointer hover:opacity-80"
           >
             <IoReorderThree className=" size-6" />
           </li>

@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import BecomeAHost from "./pages/BecomeAHost";
 import Listings from "./components/Listings";
 import UpdateListing from "./pages/UpdateListing";
+import Listing from "./pages/Listing";
 
 export default function App() {
   return (
@@ -23,11 +24,12 @@ export default function App() {
         }}
       >
         <Header />
-        <main className="flex-1">
+        <main className="  flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/listing/:id" element={<Listing />} />
             <Route element={<PrivateRoute />}>
               {/* <Profile/> */}
               <Route path="/profile" element={<Profile />}>

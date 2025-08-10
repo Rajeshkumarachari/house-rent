@@ -83,7 +83,7 @@ export default function Model({ show, setShow }) {
       </div>
       <hr className=" text-gray-400 mx-4 " />
       <div className=" hover:bg-red-50 my-2 cursor-pointer px-3">
-        {currentUser.email ? (
+        {currentUser?.email ? (
           <p
             onClick={handleSignOut}
             className="flex items-center gap-1 text-red-500"
