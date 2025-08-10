@@ -12,16 +12,17 @@ import { TbElevator } from "react-icons/tb";
 import { IoWifiSharp } from "react-icons/io5";
 import { PiCoatHanger } from "react-icons/pi";
 import { BsSignNoParking } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import HostUser from "../components/HostUser";
 const Listing = () => {
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [saved, setSaved] = useState(false);
+  const { currentUser } = useSelector((store) => store.user || {});
 
-  console.log(listing);
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -39,6 +40,7 @@ const Listing = () => {
         setLoading(false);
       }
     };
+
     fetchListing();
   }, [params.id]);
 
@@ -102,7 +104,18 @@ const Listing = () => {
                   {listing?.bathrooms > 1 ? " bathrooms" : " bathroom"}
                 </span>
               </div>
-
+              {/* Hosted user */}
+              <div className="">
+                {currentUser && listing.userRef !== currentUser._id ? (
+                  <div className=" my-7">
+                    <HostUser hostId={listing?.userRef} />
+                  </div>
+                ) : (
+                  <div className=" my-7">
+                    <p>This is your list {currentUser?.username} </p>
+                  </div>
+                )}
+              </div>
               <div className=" mt-10">
                 <h1 className="font-medium text-xl">About this place</h1>
                 <p>{listing?.description} </p>
