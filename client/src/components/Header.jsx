@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoMdLogIn } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoReorderThree } from "react-icons/io5";
 
 import { useSelector } from "react-redux";
@@ -10,7 +10,23 @@ import Model from "./Model";
 const Header = () => {
   const [show, setShow] = useState(false);
   const { currentUser } = useSelector((store) => store.user || {});
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   // console.log("currentUser", currentUser);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, []);
   return (
     <header className=" bg-slate-50 shadow-md">
       <div className=" flex justify-between items-center max-w-6xl mx-auto p-2 ">
@@ -20,15 +36,20 @@ const Header = () => {
             <span className=" text-slate-700"> House</span>
           </h1>
         </Link>
-        <form className=" bg-slate-100 p-3 w-[380px] sm:w-fit rounded-4xl flex justify-between items-center">
+        <form
+          onSubmit={handleSearch}
+          className=" bg-slate-100 p-3 w-[380px] sm:w-fit rounded-4xl flex justify-between items-center"
+        >
           <input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             type="text"
             placeholder="Search destinations"
             className=" bg-transparent focus:outline-none w-36  sm:w-64"
           />
-          <p className=" bg-rose-500 p-1.5 rounded-full cursor-pointer">
+          <button className=" bg-rose-500 p-1.5 rounded-full cursor-pointer">
             <FaSearch className=" text-white" />
-          </p>
+          </button>
         </form>
         <ul className=" flex gap-4">
           <Link to={"/home"}>
