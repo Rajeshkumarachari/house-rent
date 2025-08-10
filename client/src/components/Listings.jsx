@@ -26,7 +26,7 @@ const Listings = () => {
   }, []);
   return (
     <div>
-      <h1 className="text-lg m-3">Your Listings </h1>
+      <h1 className="text-3xl font-medium mt-2  text-center">Your Listings </h1>
       <div className="flex flex-wrap mx-3 gap-3">
         {listings &&
           listings.length > 0 &&

@@ -14,6 +14,7 @@ import Listings from "./components/Listings";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
+import Wishlist from "./components/Wishlist";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
                 <Route path="past-trips" element={<PastTrips />} />
                 <Route path="connections" element={<Connections />} />
                 <Route path="listings" element={<Listings />} />
+                <Route path="wishlists" element={<Wishlist />} />
               </Route>
               <Route path="/become-a-host" element={<BecomeAHost />} />
               <Route

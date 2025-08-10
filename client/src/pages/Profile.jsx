@@ -21,12 +21,18 @@ const Profile = () => {
     },
     {
       id: 3,
+      name: "Wishlists",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUebCGSJvtrw39gLyA2xqwGD4BPlgETF3-zA&s",
+      link: "/profile/wishlists",
+    },
+    {
+      id: 4,
       name: "Past trips",
       logo: "https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-UserProfile/original/797c1df2-a40c-4d93-9550-ca5b213cd01b.png?im_w=240",
       link: "/profile/past-trips",
     },
     {
-      id: 4,
+      id: 5,
       name: "Connections",
       logo: "https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-UserProfile/original/ed28537a-fc3c-4253-bb89-a6d927df7e50.png?im_w=240",
       link: "/profile/connections",

@@ -22,6 +22,16 @@ const Listing = () => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [saved, setSaved] = useState(false);
   const { currentUser } = useSelector((store) => store.user || {});
+  const toggleWishlist = async () => {
+    try {
+      const data = await axios.post(`/api/user/toggle-wishlist`, {
+        listingId: listing._id,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -63,7 +73,7 @@ const Listing = () => {
               <span className="  underline"> Share</span>
             </p>
             <p
-              onClick={() => setSaved(!saved)}
+              onClick={toggleWishlist}
               className="flex justify-center items-center gap-1 rounded-lg  hover:bg-slate-200 px-2 py-1 cursor-pointer"
             >
               {saved ? (
