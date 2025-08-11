@@ -36,9 +36,7 @@ export default function Model({ show, setShow }) {
     try {
       setShow(false);
       dispatch(signOutUserStart());
-      const data = await axios.get("/api/auth/signout", {
-        withCredentials: true,
-      });
+      const data = await axios.get("/api/auth/signout");
       if (data.success === false) {
         dispatch(signOutUserFailure(data));
         return;

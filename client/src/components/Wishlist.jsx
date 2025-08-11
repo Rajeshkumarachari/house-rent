@@ -9,7 +9,7 @@ const Wishlist = () => {
   const { currentUser } = useSelector((store) => store.user || {});
   const [userWishlist, setUserWishlist] = useState([]);
   const [data, setData] = useState([]);
-  console.log(data);
+  // console.log(data);
 
   const fetchUser = async () => {
     try {

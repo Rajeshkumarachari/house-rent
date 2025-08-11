@@ -15,13 +15,12 @@ const OAuth = () => {
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
-      console.log("result", result);
       const res = await axios.post("/api/auth/google", {
         name: result.user.displayName,
         email: result.user.email,
         photo: result.user.photoURL,
       });
-      console.log(res?.data);
+      // console.log(res?.data);
       dispatch(signInSuccess(res?.data));
       navigate("/");
     } catch (error) {

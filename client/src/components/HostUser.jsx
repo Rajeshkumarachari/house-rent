@@ -6,7 +6,7 @@ dayjs.extend(relativeTime);
 
 const HostUser = ({ hostId }) => {
   const [host, setHost] = useState(null);
-  console.log(host);
+  // console.log(host);
   useEffect(() => {
     const fetchHostedUser = async () => {
       try {

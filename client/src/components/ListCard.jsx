@@ -11,7 +11,7 @@ const ListCard = ({ list }) => {
   const handleDeleteList = async () => {
     try {
       const res = await axios.delete(`/api/listing/delete/${list._id}`);
-      console.log(res);
+      // console.log(res);
       if (res.success === false) {
         console.log(res.message);
         return;

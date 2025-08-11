@@ -27,7 +27,7 @@ const Listing = () => {
       const data = await axios.post(`/api/user/toggle-wishlist`, {
         listingId: listing._id,
       });
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
