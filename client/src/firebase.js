@@ -1,12 +1,16 @@
 import { initializeApp } from "firebase/app";
-
+import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "mern-auth-9e866.firebaseapp.com",
-  projectId: "mern-auth-9e866",
-  storageBucket: "mern-auth-9e866.appspot.com",
-  messagingSenderId: "1061717226344",
-  appId: "1:1061717226344:web:212a4fde6ade96000e9cdd",
+  authDomain: "rajesh-house-cedab.firebaseapp.com",
+  projectId: "rajesh-house-cedab",
+  storageBucket: "rajesh-house-cedab.firebasestorage.app",
+  messagingSenderId: "1027258284208",
+  appId: "1:1027258284208:web:3dedc9ba010f6b4979e375",
+  measurementId: "G-HT8CQT8X6Q",
 };
+
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 export const app = initializeApp(firebaseConfig);

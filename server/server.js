@@ -11,13 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "http://localhost:5174",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: "*",
-  })
-);
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGO)

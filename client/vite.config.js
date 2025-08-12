@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://house-rent-pi.vercel.app" || "http://localhost:3000",
         secure: false,
       },
     },
